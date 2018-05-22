@@ -1,0 +1,22 @@
+docker run -v  d:/gisdata/nederland/terrain:/data -ti -i homme/cesium-terrain-builder:latest bash
+
+root@c1412e2fd51c:/# ctb-tile -o /data/tiles /data/i09bz1.tif
+
+
+docker run -p 8015:8000 -v c:/beysehir_tilesets/terrain:/data/tilesets/terrain geodata/cesium-terrain-server
+
+
+docker run -p 8015:8000 -v c:/cesium/Apps/karisik/terrain:/data/tilesets/terrain geodata/cesium-terrain-server
+
+docker run -ti -i geodata/cesium-terrain-server bash
+
+
+
+beysehir > terrain > tiffs
+		     tiles > 0/1/2... layer.json
+
+docker build  -t "new-cesium-terrain-builder" .
+
+gdalbuildvrt merged.vrt L4141?.tif
+mkdir terrain
+ctb-tile -o terrain -f Mesh -g 1.1 merged.vrt
