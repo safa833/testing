@@ -19,7 +19,24 @@ docker build  -t "new-cesium-terrain-builder" .
 
 gdalbuildvrt merged.vrt L4141?.tif
 mkdir terrain
-ctb-tile -o terrain -f Mesh -g 1.1 merged.vrt
+ctb-tile -o antalya_quantizedmesh -f Mesh -g 1.1 merged.vrt
+ctb-tile -o tiles -f Mesh -g 1.1 -l merged.vrt
 
 
 docker kill $(docker ps -q)
+
+docker run -v  c:/terrain_output:/data -ti -i new-cesium-terrain-builder:latest bash
+
+docker run -p 8015:8000 -v c:/terrain_output:/data/tilesets/terrain geodata/cesium-terrain-server
+
+    var viewer = new Cesium.Viewer('cesiumContainer', {
+
+        terrainProvider : new Cesium.CesiumTerrainProvider({
+
+            url : 'http://localhost:8015/tilesets/antalya_quantizedmesh'
+
+        })
+
+    });
+
+
