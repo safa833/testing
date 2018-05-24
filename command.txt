@@ -20,3 +20,6 @@ docker build  -t "new-cesium-terrain-builder" .
 gdalbuildvrt merged.vrt L4141?.tif
 mkdir terrain
 ctb-tile -o terrain -f Mesh -g 1.1 merged.vrt
+
+
+docker kill $(docker ps -q)
