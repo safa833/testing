@@ -40,4 +40,3 @@ docker run -p 8015:8000 -v c:/terrain_output:/data/tilesets/terrain geodata/cesi
     });
 
 
-https://github.com/AnalyticalGraphicsInc/cesium/issues/5835
