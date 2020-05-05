@@ -38,5 +38,7 @@ docker run -p 8015:8000 -v c:/terrain_output:/data/tilesets/terrain geodata/cesi
         })
 
     });
+    
+docker rm -f $(docker ps -a -q)    
 
 
